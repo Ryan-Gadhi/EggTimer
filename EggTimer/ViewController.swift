@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         print(levels[level!]!)
         print("minutes")
         let eggTimeInMinutes = levels[level!]
-        let timeInSeconds = Int(eggTimeInMinutes!) * 1 // 60 seconds in  one minute
+        let timeInSeconds = Int(eggTimeInMinutes!) * 60 // 60 seconds in  one minute
         countDown(count: Int(timeInSeconds)) // should do it in better way
     
     }
