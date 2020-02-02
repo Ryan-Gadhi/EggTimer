@@ -13,9 +13,12 @@ class ViewController: UIViewController {
     let levels = ["Soft": 5, "Medium": 8, "Hard": 12]
     var counter = 0
     var timer = Timer()
+    var totalTime = 0
     
     @IBOutlet weak var labelUpdate: UILabel!
     
+    
+    @IBOutlet weak var increasedProgress: UIProgressView!
     
     @IBAction func hardnessSelected(_ sender: UIButton) {
         
@@ -25,6 +28,7 @@ class ViewController: UIViewController {
         print("minutes")
         let eggTimeInMinutes = levels[level!]
         let timeInSeconds = Int(eggTimeInMinutes!) * 60 // 60 seconds in  one minute
+        totalTime = timeInSeconds
         countDown(count: Int(timeInSeconds)) // should do it in better way
     
     }
@@ -41,10 +45,13 @@ class ViewController: UIViewController {
         if counter > 0 {
             print("time remainging until your egg is ready is \(counter) seconds")
             counter -= 1
+            increasedProgress.progress = 1.0 -  Float(counter)/Float(totalTime)
         }else{
             print("your eggs are ready 😇")
             labelUpdate.text = "Horray! your eggs are ready 😍"
             timer.invalidate()
+            
+            increasedProgress.progress = 1
         }
     }
         
