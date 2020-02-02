@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         let level = sender.currentTitle
     
         print(levels[level!])
+        print("minutes")
     }
     
 
